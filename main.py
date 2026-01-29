@@ -147,6 +147,15 @@ def train_gan(
     return G_losses, D_losses
 
 
+def show_samples(G, title):
+    z = torch.randn(16, 128, 1, 1, device=device)
+    imgs = G(z).cpu()
+    grid = make_grid(imgs, nrow=4, normalize=True)
+    plt.imshow(grid.permute(1,2,0))
+    plt.title(title)
+    plt.axis("off")
+    plt.show()
+
 
 if __name__ == "__main__":
 
@@ -219,14 +228,7 @@ if __name__ == "__main__":
 
 
 
-    def show_samples(G, title):
-        z = torch.randn(16, 128, 1, 1, device=device)
-        imgs = G(z).cpu()
-        grid = make_grid(imgs, nrow=4, normalize=True)
-        plt.imshow(grid.permute(1,2,0))
-        plt.title(title)
-        plt.axis("off")
-        plt.show()
+    # PART 2
 
 
     show_samples(G_dcgan, "DCGAN Samples")
