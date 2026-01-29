@@ -3,6 +3,7 @@ import torch
 import datetime
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
+import matplotlib.pyplot as plt
 
 from models import Generator, Discriminator
 from losses import *
@@ -122,6 +123,15 @@ def main(args):
     # Save checkpoints
     torch.save(G.state_dict(), f"checkpoints/G_{args.mode}.pth")
     torch.save(D.state_dict(), f"checkpoints/D_{args.mode}.pth")
+
+    plt.figure(figsize=(10,4))
+
+    plt.plot(G_losses, label="G")
+    plt.plot(D_losses, label="D")
+    plt.title(f"{args.mode} Loss")
+    plt.legend()
+
+    plt.show()
 
     print("Training finished. Models saved.")
 
