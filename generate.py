@@ -2,12 +2,14 @@ import argparse
 import torch
 import matplotlib.pyplot as plt
 from torchvision.utils import make_grid
-
 from models import Generator
 
-def show_samples(G, title, device, z_dim, n_samples=16):
-    import matplotlib.pyplot as plt
-    from torchvision.utils import make_grid
+def show_samples(G, title, device, args):
+    z_dim = args.z_dim
+    if hasattr(args, "n_samples"):
+        n_samples = args.n_samples
+    else:
+        n_samples = 16
 
     z = torch.randn(n_samples, z_dim, 1, 1, device=device)
     imgs = G(z).cpu()
@@ -33,7 +35,7 @@ def main(args):
     G.load_state_dict(torch.load(args.checkpoint, map_location=device))
     G.eval()
 
-    show_samples(G, args.title if hasattr(args, "title") else "Generated Samples", device, args.z_dim, args.n_samples)
+    show_samples(G, args.title if hasattr(args, "title") else "Generated Samples", device, args)
 
     # z = torch.randn(args.n_samples, args.z_dim, 1, 1, device=device)
     # imgs = G(z).cpu()
