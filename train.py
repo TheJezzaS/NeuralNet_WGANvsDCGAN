@@ -63,7 +63,15 @@ def train_gan(
     return G_losses, D_losses
 
 def main(args):
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    # Detect device
+    ## Use cuda if releven, otherwise mps (if mac), otherwise cpu (sad)
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+    elif torch.backends.mps.is_available():
+        device = torch.device("mps")
+    else:
+        device = torch.device("cpu")
+    print("Using device:", device)
 
     # Dataset
     transform = transforms.Compose([
