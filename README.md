@@ -1,5 +1,10 @@
 # DCGAN and WGAN-GP on Fashion-MNIST
 
+NOTE:
+first clone the github repo via the first code block!
+then you can run the implemented code.
+link: https://github.com/TheJezzaS/NeuralNet_WGANvsDCGAN.git
+
 This project implements **DCGAN** and **WGAN-GP** using PyTorch and trains them on the **Fashion-MNIST** dataset.  
 The architecture is adapted from the *simple CIFAR-10 model* described in  
 **“Improved Training of Wasserstein GANs” (Gulrajani et al.)**, modified for 1×28×28 grayscale images.
