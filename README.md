@@ -18,6 +18,14 @@ python train.py --mode dcgan
 ###  Train WGAN-GP
 python train.py --mode wgan
 
+
+Optional flags:
+--epochs, default=20
+--batch_size, default=64
+--lr, default=1e-4
+--z_dim, default=128
+--n_critic, default=5
+
 After training, the following files are saved automatically:
 checkpoints/G_dcgan.pth
 checkpoints/D_dcgan.pth
@@ -34,3 +42,8 @@ python generate.py --checkpoint checkpoints/G_dcgan.pth
 
 ### Generate images with WGAN-GP
 python generate.py --checkpoint checkpoints/G_wgan.pth
+
+Optional flags:
+--z_dim, default=128
+--n_samples, default=16
+"--show_real"

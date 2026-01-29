@@ -221,7 +221,7 @@ if __name__ == "__main__":
     plt.title("WGAN-GP Loss")
     plt.legend()
 
-    plt.show()
+    # plt.show()
 
 
 
@@ -229,11 +229,8 @@ if __name__ == "__main__":
 
 
     # PART 2
-
-
     show_samples(G_dcgan, "DCGAN Samples")
     show_samples(G_wgan, "WGAN-GP Samples")
-
 
     label = 0  # T-shirt
     real_imgs = [img for img, y in dataset if y == label][:2]

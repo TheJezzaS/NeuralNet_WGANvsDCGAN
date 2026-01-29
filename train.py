@@ -125,7 +125,8 @@ def main(args):
     torch.save(D.state_dict(), f"checkpoints/D_{args.mode}.pth")
 
     plt.figure(figsize=(10,4))
-
+    plt.ylabel("Loss per batch")
+    plt.xlabel("Batch Number")
     plt.plot(G_losses, label="G")
     plt.plot(D_losses, label="D")
     plt.title(f"{args.mode} Loss")
